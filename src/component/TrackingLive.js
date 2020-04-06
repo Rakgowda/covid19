@@ -5,6 +5,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
 
 const useStyles = makeStyles({
   card: {
@@ -12,7 +13,8 @@ const useStyles = makeStyles({
     marginTop:50,
     color:"white",
     textAlign:"center",
-    margin: 10
+    margin: 10,
+    height:120
 
   },
   cardContent:{
@@ -30,6 +32,13 @@ const useStyles = makeStyles({
       fontWeight:"bold",
       textAlign:"center"
 
+  },
+  arrow:{
+      color:"white",
+      position:"relative",
+      display:"flex",
+      justifyContent:"flex-end"
+
   }
 
  
@@ -43,7 +52,13 @@ function Tracking(params) {
 
     return (
       <Card className={classes.card} style={cardcolor} variant="outlined">
+        <div className={classes.arrow}>
+        <ArrowUpwardIcon style={{ fontSize:20}}></ArrowUpwardIcon>
+        <Typography>{params.data[params.data.length - 1]?params.data[params.data.length - 1]["Cases"]-params.data[params.data.length - 2]["Cases"]:"..."}</Typography>
+        </div>
+        
         <CardContent className={classes.cardContent}>
+         
     <Typography className={classes.title}>{params.cardTitle}</Typography>
     <Typography className={classes.subtitlt}>{params.data[params.data.length - 1]?params.data[params.data.length - 1]["Cases"]:"..."}</Typography>
 

@@ -52,7 +52,7 @@ function Header(params) {
     }, [])
     return(
             <React.Fragment>
-                 <h1 className={classes.root}>{"INDIA COVID19 LIVE TRACKING"}</h1>
+                 <h1 className={classes.root}>{"COVID19 LIVE TRACKING"}</h1>
                  <img className={classes.images} src={virus} alt="virus"></img>
                  <div className={classes.cardItems} >
                  <Tracking key="1" cardColor={"#FF8D4E"} cardTitle={"Total"} data={covidTrackingstate.data} />
