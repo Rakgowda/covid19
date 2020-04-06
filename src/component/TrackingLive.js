@@ -45,7 +45,7 @@ function Tracking(params) {
       <Card className={classes.card} style={cardcolor} variant="outlined">
         <CardContent className={classes.cardContent}>
     <Typography className={classes.title}>{params.cardTitle}</Typography>
-    <Typography className={classes.subtitlt}>{params.data[74]?params.data[74]["Cases"]:"..."}</Typography>
+    <Typography className={classes.subtitlt}>{params.data[params.data.length - 1]?params.data[params.data.length - 1]["Cases"]:"..."}</Typography>
 
         </CardContent>
       </Card>

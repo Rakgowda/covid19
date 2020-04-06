@@ -32,7 +32,7 @@ const fetchCovidDeaths = () => {
     dispatch(fetchRequest);
     axios
       .get(
-        "https://api.covid19api.com/country/india/status/deaths"
+        "https://api.covid19api.com/country/india/status/deaths/live"
       )
       .then(response => {
         const data = response.data;
