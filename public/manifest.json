@@ -1,19 +1,19 @@
 {
   "short_name": "Covid19 Live Tracking",
-  "name": "Create React App Sample",
+  "name": "Covid19 Live Tracking",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "Corona.svg",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
+      "src": "Corona.svg",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "logo512.png",
+      "src": "Corona.svg",
       "type": "image/png",
       "sizes": "512x512"
     }
