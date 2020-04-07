@@ -6,7 +6,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
-
+import Badge from '@material-ui/core/Badge';
 const useStyles = makeStyles({
   card: {
     width: 100,
@@ -37,8 +37,7 @@ const useStyles = makeStyles({
       color:"white",
       position:"relative",
       display:"flex",
-      justifyContent:"flex-end"
-
+      justifyContent:"flex-end",
   }
 
  
