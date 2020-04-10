@@ -83,8 +83,7 @@ covidDeathTrackingstate.Deathdata.data.history[covidDeathTrackingstate.Deathdata
   
 
 <tr style={{textAlign:"center"}} data-toggle="collapse" data-target="#demo1" class="accordion-toggle">
-<td >
-<ArrowUpwardIcon style={{ fontSize:10,textAlign:"start"}}></ArrowUpwardIcon>{state.state}
+<td >{state.state}
 </td>
 <td>{state.confirmed} <sup><span class="badge badge-pill badge-warning" style={{ fontSize:8}}>{confirmed>0?(<ArrowUpwardIcon style={{ fontSize:8}}></ArrowUpwardIcon>):""}{confirmed>0?confirmed:""}</span></sup></td>
 <td>{state.deaths}<sup><span class="badge badge-pill badge-danger" style={{ fontSize:8}}>{deaths>0?(<ArrowUpwardIcon style={{ fontSize:8}}></ArrowUpwardIcon>):""}{deaths>0?deaths:""}</span></sup></td>
