@@ -44,6 +44,7 @@ export default function ControlledExpansionPanels() {
     const covidSateTrackingDispatch = useDispatch();
     const covidDeathTrackingstate = useSelector(state=>state.CovidDeathreducer)
     const covidDeathTrackingDispatch = useDispatch();
+ 
 
 
     useEffect(() => {
@@ -72,15 +73,19 @@ export default function ControlledExpansionPanels() {
     <tbody>
     {covidDeathTrackingstate.Deathdata.data?
 
-covidDeathTrackingstate.Deathdata.data.history[covidDeathTrackingstate.Deathdata.data.history.length-1].statewise.map((state,index)=>{
+covidDeathTrackingstate.Deathdata.data.history[covidDeathTrackingstate.Deathdata.data.history.length-1].statewise.sort((a,b)=>b.confirmed-a.confirmed).map((state,index)=>{
   
-  let confirmed=state.confirmed-covidDeathTrackingstate.Deathdata.data.history[covidDeathTrackingstate.Deathdata.data.history.length-2].statewise[index].confirmed;
-  let deaths=state.deaths-covidDeathTrackingstate.Deathdata.data.history[covidDeathTrackingstate.Deathdata.data.history.length-2].statewise[index].deaths;
-  let recovered=state.recovered-covidDeathTrackingstate.Deathdata.data.history[covidDeathTrackingstate.Deathdata.data.history.length-2].statewise[index].recovered;
+  let len = covidDeathTrackingstate.Deathdata.data.history.length;
+  let prevsta = covidDeathTrackingstate.Deathdata.data.history[len-2].statewise.filter((a)=>a.state==state.state).map(b=>b)
+  let previconf = prevsta[0].confirmed;
+  let prevideath = prevsta[0].deaths;
+  let previrecoverd = prevsta[0].recovered;
+ 
+  let confirmed=state.confirmed-previconf;
+  let deaths=state.deaths-prevideath;
+  let recovered=state.recovered-previrecoverd;
 
   return (
-
-  
 
 
       <React.Fragment key={state.state}>
@@ -88,17 +93,17 @@ covidDeathTrackingstate.Deathdata.data.history[covidDeathTrackingstate.Deathdata
 <td >
 {state.state}
 </td>
-<td>{state.confirmed} <sup><span className="text-warning" style={{ fontSize:10}}>{confirmed>0?(<ArrowUpwardIcon style={{ fontSize:10}}></ArrowUpwardIcon>):""}{confirmed>0?confirmed:""}</span></sup></td>
-<td>{state.deaths}<sup><span className="text-danger" style={{ fontSize:10}}>{deaths>0?(<ArrowUpwardIcon style={{ fontSize:10}}></ArrowUpwardIcon>):""}{deaths>0?deaths:""}</span></sup></td>
-<td>{state.recovered} <sup><span className="text-success" style={{ fontSize:10}}>{recovered>0?(<ArrowUpwardIcon style={{ fontSize:10}}></ArrowUpwardIcon>):""}{recovered>0?recovered:""}</span></sup></td>
+<td>{state.confirmed} <sup><span className="text-warning" style={{ fontSize:9}}>{confirmed>0?(<ArrowUpwardIcon style={{ fontSize:9}}></ArrowUpwardIcon>):""}{confirmed>0?confirmed:""}</span></sup></td>
+<td>{state.deaths}<sup><span className="text-danger" style={{ fontSize:9}}>{deaths>0?(<ArrowUpwardIcon style={{ fontSize:9}}></ArrowUpwardIcon>):""}{deaths>0?deaths:""}</span></sup></td>
+<td>{state.recovered} <sup><span className="text-success" style={{ fontSize:9}}>{recovered>0?(<ArrowUpwardIcon style={{ fontSize:9}}></ArrowUpwardIcon>):""}{recovered>0?recovered:""}</span></sup></td>
 
       </tr>
-      <div id={state.state.split(" ")[0]} className="collapse">
+      <div id={state.state.split(" ")[0]} className="collapse" style={{alignItems:"center"}}>
   <h4>{state.state} State Detail</h4>
       <table className="table table-striped" key={state.state}>
     <thead>
     <tr style={{textAlign:"center"}}>
-        <th>Distrct</th>
+        <th>Districtt</th>
         <th>Confirmed</th>
         
       </tr>
@@ -107,7 +112,7 @@ covidDeathTrackingstate.Deathdata.data.history[covidDeathTrackingstate.Deathdata
 
       {covidStaTrackingstate.data[state.state]?
       
-        Object.keys(covidStaTrackingstate.data[state.state].districtData).map((keyname,index)=>{
+        Object.keys(covidStaTrackingstate.data[state.state].districtData).sort((a,b)=>covidStaTrackingstate.data[state.state].districtData[b].confirmed - covidStaTrackingstate.data[state.state].districtData[a].confirmed).map((keyname,index)=>{
           return (<tr style={{textAlign:"center"}} key={keyname}>
           <td>{keyname}</td>
           <td>{covidStaTrackingstate.data[state.state].districtData[keyname].confirmed}</td>
