@@ -32,7 +32,7 @@ const fetchglobalCovid = () => {
     dispatch(fetchRequest);
     axios
       .get(
-        "https://api.covid19api.com/summary"
+        "https://api.covid19india.org/state_district_wise.json"
       )
       .then(response => {
         const data = response.data;
