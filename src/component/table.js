@@ -1,44 +1,140 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+
+import {useSelector,useDispatch} from "react-redux"
+
 import { makeStyles } from '@material-ui/core/styles';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import fetchglobalCovid from "../redux/globalTracking/globalTrackingAction"
+import fetchCovidDeaths from "../redux/coviddeathtracking/covidDeathAction"
+import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
+
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
   },
   heading: {
-    fontSize: theme.typography.pxToRem(15),
-    flexBasis: '33.33%',
-    flexShrink: 0,
+    fontSize: 15,
+    display:"flex",
+    fontWeight:"bold",
+    justifyContent: "flex-start",
+    justifyItems:"center",
+
+
   },
   secondaryHeading: {
-    fontSize: theme.typography.pxToRem(15),
-    color: theme.palette.text.secondary,
+    margin:20
+
   },
+  incresed:{
+    color:"red",
+
+  }
 }));
 
 export default function ControlledExpansionPanels() {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
+    const covidStaTrackingstate = useSelector(state=>state.globalreducer)
+    const covidSateTrackingDispatch = useDispatch();
+    const covidDeathTrackingstate = useSelector(state=>state.CovidDeathreducer)
+    const covidDeathTrackingDispatch = useDispatch();
+
+
+    useEffect(() => {
+        covidDeathTrackingDispatch(fetchCovidDeaths());
+        covidSateTrackingDispatch(fetchglobalCovid());
+        
+    }, [])
 
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
 
   return (
-    <div className={classes.root}>
-      <ExpansionPanel expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
+    <div>
+      <table class="table table-striped">
+    <thead>
+      <tr style={{textAlign:"center"}}>
+        <th>State</th>
+        <th>Confirmed</th>
+        <th>Death</th>
+        <th>Recovered</th>
+      </tr>
+    </thead>
+    <tbody>
+    {covidDeathTrackingstate.Deathdata.data?
+
+//   console.log(covidDeathTrackingstate.Deathdata.data.history)
+
+covidDeathTrackingstate.Deathdata.data.history[covidDeathTrackingstate.Deathdata.data.history.length-1].statewise.map((state,index)=>{
+  
+  let confirmed=state.confirmed-covidDeathTrackingstate.Deathdata.data.history[covidDeathTrackingstate.Deathdata.data.history.length-2].statewise[index].confirmed;
+  let deaths=state.deaths-covidDeathTrackingstate.Deathdata.data.history[covidDeathTrackingstate.Deathdata.data.history.length-2].statewise[index].deaths;
+  let recovered=state.recovered-covidDeathTrackingstate.Deathdata.data.history[covidDeathTrackingstate.Deathdata.data.history.length-2].statewise[index].recovered;
+
+  return (
+
+  
+
+<tr style={{textAlign:"center"}} data-toggle="collapse" data-target="#demo1" class="accordion-toggle">
+<td >
+<ArrowUpwardIcon style={{ fontSize:10,textAlign:"start"}}></ArrowUpwardIcon>{state.state}
+</td>
+<td>{state.confirmed} <sup><span class="badge badge-pill badge-warning" style={{ fontSize:8}}>{confirmed>0?(<ArrowUpwardIcon style={{ fontSize:8}}></ArrowUpwardIcon>):""}{confirmed>0?confirmed:""}</span></sup></td>
+<td>{state.deaths}<sup><span class="badge badge-pill badge-danger" style={{ fontSize:8}}>{deaths>0?(<ArrowUpwardIcon style={{ fontSize:8}}></ArrowUpwardIcon>):""}{deaths>0?deaths:""}</span></sup></td>
+<td>{state.recovered} <sup><span class="badge badge-pill badge-success" style={{ fontSize:8}}>{recovered>0?(<ArrowUpwardIcon style={{ fontSize:8}}></ArrowUpwardIcon>):""}{recovered>0?recovered:""}</span></sup></td>
+
+      </tr>
+ 
+
+)        
+    
+    
+    })
+  :
+  (<tr style={{textAlign:"center"}}>
+  <td>...</td>
+  <td>...</td>
+  <td>...</td>
+  <td>...</td>
+  
+        </tr>)}
+ 
+  
+ 
+      
+     
+    </tbody>
+  </table>
+
+{/* 
+      {covidDeathTrackingstate.Deathdata.data?
+
+    //   console.log(covidDeathTrackingstate.Deathdata.data.history)
+
+    covidDeathTrackingstate.Deathdata.data.history[covidDeathTrackingstate.Deathdata.data.history.length-1].statewise.map((state)=>{
+         
+ return (<ExpansionPanel expanded={expanded === state.state} style={{}} onChange={handleChange(state.state)}>
         <ExpansionPanelSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1bh-content"
           id="panel1bh-header"
+          className={classes.heading}
         >
-          <Typography className={classes.heading}>General settings</Typography>
-          <Typography className={classes.secondaryHeading}>I am an expansion panel</Typography>
+         
+          <p className={classes.secondaryHeading}>{state.state}</p>
+          <p className={classes.secondaryHeading}>{state.confirmed}</p>
+          <p className={classes.secondaryHeading}>{state.deaths}</p>
+          <p className={classes.secondaryHeading}>{state.recovered}</p>
+
+         
+
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           <Typography>
@@ -47,57 +143,16 @@ export default function ControlledExpansionPanels() {
           </Typography>
         </ExpansionPanelDetails>
       </ExpansionPanel>
-      <ExpansionPanel expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
-        <ExpansionPanelSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel2bh-content"
-          id="panel2bh-header"
-        >
-          <Typography className={classes.heading}>Users</Typography>
-          <Typography className={classes.secondaryHeading}>
-            You are currently not an owner
-          </Typography>
-        </ExpansionPanelSummary>
-        <ExpansionPanelDetails>
-          <Typography>
-            Donec placerat, lectus sed mattis semper, neque lectus feugiat lectus, varius pulvinar
-            diam eros in elit. Pellentesque convallis laoreet laoreet.
-          </Typography>
-        </ExpansionPanelDetails>
-      </ExpansionPanel>
-      <ExpansionPanel expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
-        <ExpansionPanelSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel3bh-content"
-          id="panel3bh-header"
-        >
-          <Typography className={classes.heading}>Advanced settings</Typography>
-          <Typography className={classes.secondaryHeading}>
-            Filtering has been entirely disabled for whole web server
-          </Typography>
-        </ExpansionPanelSummary>
-        <ExpansionPanelDetails>
-          <Typography>
-            Nunc vitae orci ultricies, auctor nunc in, volutpat nisl. Integer sit amet egestas eros,
-            vitae egestas augue. Duis vel est augue.
-          </Typography>
-        </ExpansionPanelDetails>
-      </ExpansionPanel>
-      <ExpansionPanel expanded={expanded === 'panel4'} onChange={handleChange('panel4')}>
-        <ExpansionPanelSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel4bh-content"
-          id="panel4bh-header"
-        >
-          <Typography className={classes.heading}>Personal data</Typography>
-        </ExpansionPanelSummary>
-        <ExpansionPanelDetails>
-          <Typography>
-            Nunc vitae orci ultricies, auctor nunc in, volutpat nisl. Integer sit amet egestas eros,
-            vitae egestas augue. Duis vel est augue.
-          </Typography>
-        </ExpansionPanelDetails>
-      </ExpansionPanel>
+
+
+)        
+        
+        
+        })
+      :""}
+      */}
+      
+     
     </div>
   );
 }

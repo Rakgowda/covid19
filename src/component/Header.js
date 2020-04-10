@@ -8,6 +8,7 @@ import fetchCovidDeaths from "../redux/coviddeathtracking/covidDeathAction"
 import fetchCovidRecovered from "../redux/covidrecovered/covidRecoveredAction"
 import Typography from '@material-ui/core/Typography';
 import GlobalTracking from "./globalTracking"
+import ControlledExpansionPanels from "./table.js"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -53,7 +54,6 @@ function Header(params) {
     useEffect(() => {
         covidTrackingDispatch(fetchCovid());
         covidDeathTrackingDispatch(fetchCovidDeaths());
-        covidRecoveredTrackingDispatch(fetchCovidRecovered())
     }, [])
     return(
             <React.Fragment>
@@ -69,7 +69,7 @@ function Header(params) {
                  <Tracking key="3" cardColor={"#2DBF56"} cardTitle="Recover" data={covidTrackingstate.data.data?covidTrackingstate.data.data.total.recovered:"..."} increased={covidDeathTrackingstate.Deathdata.data?covidDeathTrackingstate.Deathdata.data.history[0].total.recovered:"..."} />
                  </div>
 
-                 
+                 <ControlledExpansionPanels />
             </React.Fragment>
     )
 }
