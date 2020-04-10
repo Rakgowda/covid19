@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import virus from "../images/virus.jpg"
+import virus from "../../public/Corona.svg"
 import { makeStyles } from '@material-ui/core/styles';
 import Tracking from './TrackingLive'
 import {useSelector,useDispatch} from "react-redux"
