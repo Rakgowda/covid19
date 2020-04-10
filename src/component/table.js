@@ -59,7 +59,7 @@ export default function ControlledExpansionPanels() {
   return (
     
     <div>
-      <table className="table table-striped">
+      <table className="table table-hover">
     <thead>
       <tr style={{textAlign:"center"}}>
         <th>State</th>
@@ -67,11 +67,10 @@ export default function ControlledExpansionPanels() {
         <th>Death</th>
         <th>Recovered</th>
       </tr>
+      
     </thead>
     <tbody>
     {covidDeathTrackingstate.Deathdata.data?
-
-//   console.log(covidDeathTrackingstate.Deathdata.data.history)
 
 covidDeathTrackingstate.Deathdata.data.history[covidDeathTrackingstate.Deathdata.data.history.length-1].statewise.map((state,index)=>{
   
@@ -84,8 +83,8 @@ covidDeathTrackingstate.Deathdata.data.history[covidDeathTrackingstate.Deathdata
   
 
 
-      <React.Fragment>
-<tr style={{textAlign:"center"}} >
+      <React.Fragment key={state.state}>
+<tr style={{textAlign:"center"}} data-toggle="collapse" data-target={"#"+state.state.split(" ")[0]} key={state.state}>
 <td >
 {state.state}
 </td>
@@ -94,7 +93,41 @@ covidDeathTrackingstate.Deathdata.data.history[covidDeathTrackingstate.Deathdata
 <td>{state.recovered} <sup><span className="text-success" style={{ fontSize:10}}>{recovered>0?(<ArrowUpwardIcon style={{ fontSize:10}}></ArrowUpwardIcon>):""}{recovered>0?recovered:""}</span></sup></td>
 
       </tr>
-    
+      <div id={state.state.split(" ")[0]} className="collapse">
+  <h4>{state.state} State Detail</h4>
+      <table className="table table-striped" key={state.state}>
+    <thead>
+    <tr style={{textAlign:"center"}}>
+        <th>Distrct</th>
+        <th>Confirmed</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+
+      {covidStaTrackingstate.data[state.state]?
+      
+        Object.keys(covidStaTrackingstate.data[state.state].districtData).map((keyname,index)=>{
+          return (<tr style={{textAlign:"center"}} key={keyname}>
+          <td>{keyname}</td>
+          <td>{covidStaTrackingstate.data[state.state].districtData[keyname].confirmed}</td>
+         
+          
+                </tr>)
+        })
+      :
+      <tr style={{textAlign:"center"}}>
+  <td>...</td>
+  <td>...</td>
+  
+  
+        </tr>}
+      
+      
+    </tbody>
+  </table>
+      </div>
+     
       </React.Fragment>
  
 
@@ -118,46 +151,25 @@ covidDeathTrackingstate.Deathdata.data.history[covidDeathTrackingstate.Deathdata
     </tbody>
   </table>
 
-{/* 
-      {covidDeathTrackingstate.Deathdata.data?
-
-    //   console.log(covidDeathTrackingstate.Deathdata.data.history)
-
-    covidDeathTrackingstate.Deathdata.data.history[covidDeathTrackingstate.Deathdata.data.history.length-1].statewise.map((state)=>{
-         
- return (<ExpansionPanel expanded={expanded === state.state} style={{}} onChange={handleChange(state.state)}>
-        <ExpansionPanelSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel1bh-content"
-          id="panel1bh-header"
-          className={classes.heading}
-        >
-         
-          <p className={classes.secondaryHeading}>{state.state}</p>
-          <p className={classes.secondaryHeading}>{state.confirmed}</p>
-          <p className={classes.secondaryHeading}>{state.deaths}</p>
-          <p className={classes.secondaryHeading}>{state.recovered}</p>
-
-         
-
-        </ExpansionPanelSummary>
-        <ExpansionPanelDetails>
-          <Typography>
-            Nulla facilisi. Phasellus sollicitudin nulla et quam mattis feugiat. Aliquam eget
-            maximus est, id dignissim quam.
-          </Typography>
-        </ExpansionPanelDetails>
-      </ExpansionPanel>
-
-
-)        
-        
-        
-        })
-      :""}
-      */}
       
      
     </div>
   );
+
+  function tableData(state) {
+    return (covidStaTrackingstate.data.kerala?
+      (
+        Object.keys(covidStaTrackingstate.data["Kerala"].districtData).map((keyname,index)=>{
+          console.log(keyname) 
+        })
+      ):
+      <tr style={{textAlign:"center"}}>
+  <td>...</td>
+  <td>...</td>
+  <td>...</td>
+  <td>...</td>
+  
+        </tr>
+      )
+    }
 }

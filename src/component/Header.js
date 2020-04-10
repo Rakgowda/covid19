@@ -71,6 +71,9 @@ function Header(params) {
                
                  
                  <br></br>
+                 <p style={{textAlign:"end"}}> <span className="badge badge-info">Click on state for more info</span></p>
+                
+                 
 
                  <ControlledExpansionPanels />
             </React.Fragment>
