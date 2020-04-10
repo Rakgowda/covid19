@@ -73,6 +73,7 @@ function Header(params) {
                
                  
                  <br></br>
+<h3 style={{textAlign:"center"}}>State Wise</h3>
                  <p style={{textAlign:"end"}}> <span className="badge badge-info">Click on state for more info</span></p>
                 
                  
