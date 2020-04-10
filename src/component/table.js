@@ -103,7 +103,7 @@ covidDeathTrackingstate.Deathdata.data.history[covidDeathTrackingstate.Deathdata
       <table className="table table-striped" key={state.state}>
     <thead>
     <tr style={{textAlign:"center"}}>
-        <th>Districtt</th>
+        <th>District</th>
         <th>Confirmed</th>
         
       </tr>
