@@ -19,8 +19,8 @@ const useStyles = makeStyles((theme) => ({
    textAlign:"center"
   },
   images:{
-      width:200,
-      height:150,
+      width:150,
+      height:100,
       marginLeft:"50%",
       transform:"translate(-50%,0%)",
       margin:50
@@ -60,12 +60,13 @@ function Header(params) {
                  <h1 className={classes.root}>{"INDIA COVID19 LIVE TRACKING"}</h1>
                  <img className={classes.images} src={virus} alt="virus"></img>
                  <Typography style={{fontSize:15,textAlign:"center"}} color="textSecondary" gutterBottom>
-          Last Update {covidTrackingstate.data[covidTrackingstate.data.length - 1]?Dateformate(covidTrackingstate.data[covidTrackingstate.data.length - 1]["Date"]):"..."}
+          Last Update {covidTrackingstate.data.data?Dateformate(covidTrackingstate.data.data.lastRefreshed):"..."}
         </Typography>
                  <div className={classes.cardItems} >
-                 <Tracking key="1" cardColor={"#FF8D4E"} cardTitle={"Total"} data={covidTrackingstate.data} />
-                 <Tracking key="2" cardColor={"#FE4F4F"} cardTitle={"Death"} data={covidDeathTrackingstate.Deathdata} />
-                 <Tracking key="3" cardColor={"#2DBF56"} cardTitle="Recover" data={covidecoveredTrackingstate.RecoveredData} />
+                 {/* increased={(covidTrackingstate.data & covidDeathTrackingstate.data)?(covidTrackingstate.data.total.confirmed - (covidDeathTrackingstate[covidDeathTrackingstate.data.length-2])):"" } */}
+                 <Tracking key="1" cardColor={"#FF8D4E"} cardTitle={"Total"} data={covidTrackingstate.data.data?covidTrackingstate.data.data.total.confirmed:"..."} increased={covidDeathTrackingstate.Deathdata.data?covidDeathTrackingstate.Deathdata.data.history[0].total.confirmed:"..."} />
+                 <Tracking key="2" cardColor={"#FE4F4F"} cardTitle={"Death"} data={covidTrackingstate.data.data?covidTrackingstate.data.data.total.recovered:"..."} increased={covidDeathTrackingstate.Deathdata.data?covidDeathTrackingstate.Deathdata.data.history[0].total.recovered:"..."}/>
+                 <Tracking key="3" cardColor={"#2DBF56"} cardTitle="Recover" data={covidTrackingstate.data.data?covidTrackingstate.data.data.total.deaths:"..."} increased={covidDeathTrackingstate.Deathdata.data?covidDeathTrackingstate.Deathdata.data.history[0].total.deaths:"..."} />
                  </div>
 
                  {/* <GlobalTracking></GlobalTracking> */}
@@ -75,7 +76,7 @@ function Header(params) {
 
 function Dateformate(date){
     let d = date.split("T")
-    return d[0]+" "+d[1]
+    return d[0]+" "+d[1].split(".")[0]
 }
 
 export default Header;

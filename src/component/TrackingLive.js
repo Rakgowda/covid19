@@ -53,13 +53,13 @@ function Tracking(params) {
       <Card className={classes.card} style={cardcolor} variant="outlined">
         <div className={classes.arrow}>
         <ArrowUpwardIcon style={{ fontSize:20}}></ArrowUpwardIcon>
-        <Typography>{params.data[params.data.length - 1]?params.data[params.data.length - 1]["Cases"]-params.data[params.data.length - 3]["Cases"]:"..."}</Typography>
+        <Typography>{params.increased}</Typography>
         </div>
         
         <CardContent className={classes.cardContent}>
          
     <Typography className={classes.title}>{params.cardTitle}</Typography>
-    <Typography className={classes.subtitlt}>{params.data[params.data.length - 1]?params.data[params.data.length - 1]["Cases"]:"..."}</Typography>
+    <Typography className={classes.subtitlt}>{params.data}</Typography>
 
         </CardContent>
       </Card>
