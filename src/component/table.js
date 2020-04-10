@@ -59,7 +59,7 @@ export default function ControlledExpansionPanels() {
   return (
     
     <div>
-      <table class="table table-striped">
+      <table className="table table-striped">
     <thead>
       <tr style={{textAlign:"center"}}>
         <th>State</th>
@@ -89,9 +89,9 @@ covidDeathTrackingstate.Deathdata.data.history[covidDeathTrackingstate.Deathdata
 <td >
 {state.state}
 </td>
-<td>{state.confirmed} <sup><span class="text-warning" style={{ fontSize:10}}>{confirmed>0?(<ArrowUpwardIcon style={{ fontSize:10}}></ArrowUpwardIcon>):""}{confirmed>0?confirmed:""}</span></sup></td>
-<td>{state.deaths}<sup><span class="text-danger" style={{ fontSize:10}}>{deaths>0?(<ArrowUpwardIcon style={{ fontSize:10}}></ArrowUpwardIcon>):""}{deaths>0?deaths:""}</span></sup></td>
-<td>{state.recovered} <sup><span class="text-success" style={{ fontSize:10}}>{recovered>0?(<ArrowUpwardIcon style={{ fontSize:10}}></ArrowUpwardIcon>):""}{recovered>0?recovered:""}</span></sup></td>
+<td>{state.confirmed} <sup><span className="text-warning" style={{ fontSize:10}}>{confirmed>0?(<ArrowUpwardIcon style={{ fontSize:10}}></ArrowUpwardIcon>):""}{confirmed>0?confirmed:""}</span></sup></td>
+<td>{state.deaths}<sup><span className="text-danger" style={{ fontSize:10}}>{deaths>0?(<ArrowUpwardIcon style={{ fontSize:10}}></ArrowUpwardIcon>):""}{deaths>0?deaths:""}</span></sup></td>
+<td>{state.recovered} <sup><span className="text-success" style={{ fontSize:10}}>{recovered>0?(<ArrowUpwardIcon style={{ fontSize:10}}></ArrowUpwardIcon>):""}{recovered>0?recovered:""}</span></sup></td>
 
       </tr>
     
