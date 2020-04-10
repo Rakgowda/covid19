@@ -9,7 +9,7 @@ import fetchCovidRecovered from "../redux/covidrecovered/covidRecoveredAction"
 import Typography from '@material-ui/core/Typography';
 import GlobalTracking from "./globalTracking"
 import ControlledExpansionPanels from "./table.js"
-
+import Divider from '@material-ui/core/Divider';
 const useStyles = makeStyles((theme) => ({
   root: {
     ...theme.typography.button,
@@ -68,6 +68,9 @@ function Header(params) {
                  <Tracking key="2" cardColor={"#FE4F4F"} cardTitle={"Death"} data={covidTrackingstate.data.data?covidTrackingstate.data.data.total.deaths:"..."} increased={covidDeathTrackingstate.Deathdata.data?covidDeathTrackingstate.Deathdata.data.history[0].total.deaths:"..."}/>
                  <Tracking key="3" cardColor={"#2DBF56"} cardTitle="Recover" data={covidTrackingstate.data.data?covidTrackingstate.data.data.total.recovered:"..."} increased={covidDeathTrackingstate.Deathdata.data?covidDeathTrackingstate.Deathdata.data.history[0].total.recovered:"..."} />
                  </div>
+               
+                 
+                 <br></br>
 
                  <ControlledExpansionPanels />
             </React.Fragment>

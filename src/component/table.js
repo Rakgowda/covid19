@@ -12,7 +12,7 @@ import fetchglobalCovid from "../redux/globalTracking/globalTrackingAction"
 import fetchCovidDeaths from "../redux/coviddeathtracking/covidDeathAction"
 import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
 
-
+import Divider from '@material-ui/core/Divider';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -57,6 +57,7 @@ export default function ControlledExpansionPanels() {
   };
 
   return (
+    
     <div>
       <table class="table table-striped">
     <thead>
@@ -82,14 +83,19 @@ covidDeathTrackingstate.Deathdata.data.history[covidDeathTrackingstate.Deathdata
 
   
 
-<tr style={{textAlign:"center"}} data-toggle="collapse" data-target="#demo1" class="accordion-toggle">
-<td >{state.state}
+
+      <React.Fragment>
+<tr style={{textAlign:"center"}} >
+<td >
+{state.state}
 </td>
-<td>{state.confirmed} <sup><span class="badge badge-pill badge-warning" style={{ fontSize:8}}>{confirmed>0?(<ArrowUpwardIcon style={{ fontSize:8}}></ArrowUpwardIcon>):""}{confirmed>0?confirmed:""}</span></sup></td>
-<td>{state.deaths}<sup><span class="badge badge-pill badge-danger" style={{ fontSize:8}}>{deaths>0?(<ArrowUpwardIcon style={{ fontSize:8}}></ArrowUpwardIcon>):""}{deaths>0?deaths:""}</span></sup></td>
-<td>{state.recovered} <sup><span class="badge badge-pill badge-success" style={{ fontSize:8}}>{recovered>0?(<ArrowUpwardIcon style={{ fontSize:8}}></ArrowUpwardIcon>):""}{recovered>0?recovered:""}</span></sup></td>
+<td>{state.confirmed} <sup><span class="text-warning" style={{ fontSize:10}}>{confirmed>0?(<ArrowUpwardIcon style={{ fontSize:10}}></ArrowUpwardIcon>):""}{confirmed>0?confirmed:""}</span></sup></td>
+<td>{state.deaths}<sup><span class="text-danger" style={{ fontSize:10}}>{deaths>0?(<ArrowUpwardIcon style={{ fontSize:10}}></ArrowUpwardIcon>):""}{deaths>0?deaths:""}</span></sup></td>
+<td>{state.recovered} <sup><span class="text-success" style={{ fontSize:10}}>{recovered>0?(<ArrowUpwardIcon style={{ fontSize:10}}></ArrowUpwardIcon>):""}{recovered>0?recovered:""}</span></sup></td>
 
       </tr>
+    
+      </React.Fragment>
  
 
 )        
