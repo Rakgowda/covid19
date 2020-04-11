@@ -94,7 +94,7 @@ covidDeathTrackingstate.Deathdata.data.history[covidDeathTrackingstate.Deathdata
       <React.Fragment key={state.state}>
 <tr style={{textAlign:"center"}} data-toggle="collapse" data-target={"#"+state.state.split(" ")[0]} key={state.state} >
 <td >
-<span style={{position:"absolute",left:0,paddingRight:5}}><ArrowRightIcon></ArrowRightIcon></span>{state.state}
+<span style={{position:"absolute",left:0}} className="mr-2"><ArrowRightIcon></ArrowRightIcon></span>{state.state}
 </td>
 <td>{state.confirmed} <sup><span className="text-warning" style={{ fontSize:9}}>{confirmed>0?(<ArrowUpwardIcon style={{ fontSize:9}}></ArrowUpwardIcon>):""}{confirmed>0?confirmed:""}</span></sup></td>
 <td>{state.deaths}<sup><span className="text-danger" style={{ fontSize:9}}>{deaths>0?(<ArrowUpwardIcon style={{ fontSize:9}}></ArrowUpwardIcon>):""}{deaths>0?deaths:""}</span></sup></td>
