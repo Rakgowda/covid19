@@ -11,6 +11,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import fetchglobalCovid from "../redux/globalTracking/globalTrackingAction"
 import fetchCovidDeaths from "../redux/coviddeathtracking/covidDeathAction"
 import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
+import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 
 import Divider from '@material-ui/core/Divider';
 
@@ -85,13 +86,15 @@ covidDeathTrackingstate.Deathdata.data.history[covidDeathTrackingstate.Deathdata
   let deaths=state.deaths-prevideath;
   let recovered=state.recovered-previrecoverd;
 
+
+
   return (
 
 
       <React.Fragment key={state.state}>
-<tr style={{textAlign:"center"}} data-toggle="collapse" data-target={"#"+state.state.split(" ")[0]} key={state.state}>
+<tr style={{textAlign:"center"}} data-toggle="collapse" data-target={"#"+state.state.split(" ")[0]} key={state.state} >
 <td >
-{state.state}
+<span style={{position:"absolute",left:0,paddingRight:5}}><ArrowRightIcon></ArrowRightIcon></span>{state.state}
 </td>
 <td>{state.confirmed} <sup><span className="text-warning" style={{ fontSize:9}}>{confirmed>0?(<ArrowUpwardIcon style={{ fontSize:9}}></ArrowUpwardIcon>):""}{confirmed>0?confirmed:""}</span></sup></td>
 <td>{state.deaths}<sup><span className="text-danger" style={{ fontSize:9}}>{deaths>0?(<ArrowUpwardIcon style={{ fontSize:9}}></ArrowUpwardIcon>):""}{deaths>0?deaths:""}</span></sup></td>
