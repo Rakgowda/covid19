@@ -32,7 +32,7 @@ function StateList(){
   
     useEffect(() => {
 
-        if(localStorage.getItem("State")!="" && localStorage.getItem("State")!=null)
+        if(localStorage.getItem("State")!=null)
         {
             setStateFlag(true);
 
