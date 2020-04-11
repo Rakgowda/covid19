@@ -14,7 +14,8 @@ const useStyles = makeStyles({
     color:"white",
     textAlign:"center",
     margin: 10,
-    height:120
+    height:120,
+    marginTop:-10
 
   },
   cardContent:{
