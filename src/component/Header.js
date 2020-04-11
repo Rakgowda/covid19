@@ -67,7 +67,7 @@ function Header(params) {
           Last Update {covidTrackingstate.data.data?Dateformate(covidTrackingstate.data.data.lastRefreshed):"..."}
         </Typography>
 <StateList></StateList>
-<h4 style={{textAlign:"center"}}> India Live Tracking</h4>
+<h4 style={{textAlign:"center"}}> India COVID19 Live Tracking</h4>
             <br></br>
                  <div className={classes.cardItems} >
 
