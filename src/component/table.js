@@ -12,6 +12,7 @@ import fetchglobalCovid from "../redux/globalTracking/globalTrackingAction"
 import fetchCovidDeaths from "../redux/coviddeathtracking/covidDeathAction"
 import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
+import fetchCovid from "../redux/getCovidlivetracking/covidJsonAction"
 
 import Divider from '@material-ui/core/Divider';
 
@@ -43,12 +44,17 @@ export default function ControlledExpansionPanels() {
   const [expanded, setExpanded] = React.useState(false);
     const covidStaTrackingstate = useSelector(state=>state.globalreducer)
     const covidSateTrackingDispatch = useDispatch();
+    const covidTrackingstate = useSelector(state=>state.reducer)
+    const covidTrackingDispatch = useDispatch();
+
     const covidDeathTrackingstate = useSelector(state=>state.CovidDeathreducer)
     const covidDeathTrackingDispatch = useDispatch();
  
 
 
     useEffect(() => {
+      covidTrackingDispatch(fetchCovid());
+
         covidDeathTrackingDispatch(fetchCovidDeaths());
         covidSateTrackingDispatch(fetchglobalCovid());
         
@@ -72,12 +78,12 @@ export default function ControlledExpansionPanels() {
       
     </thead>
     <tbody>
-    {covidDeathTrackingstate.Deathdata.data?
+    {covidDeathTrackingstate.Deathdata.data && covidTrackingstate.data.data?
 
-covidDeathTrackingstate.Deathdata.data.history[covidDeathTrackingstate.Deathdata.data.history.length-1].statewise.sort((a,b)=>b.confirmed-a.confirmed).map((state,index)=>{
+covidTrackingstate.data.data.statewise.sort((a,b)=>b.confirmed-a.confirmed).map((state,index)=>{
   
   let len = covidDeathTrackingstate.Deathdata.data.history.length;
-  let prevsta = covidDeathTrackingstate.Deathdata.data.history[len-2].statewise.filter((a)=>a.state==state.state).map(b=>b)
+  let prevsta = covidDeathTrackingstate.Deathdata.data.history[len-1].statewise.filter((a)=>a.state==state.state).map(b=>b)
   let previconf = prevsta[0].confirmed;
   let prevideath = prevsta[0].deaths;
   let previrecoverd = prevsta[0].recovered;

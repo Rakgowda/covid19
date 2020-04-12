@@ -32,7 +32,7 @@ function StateList(){
   
     useEffect(() => {
 
-        if(localStorage.getItem("State")!=null && localStorage.getItem("State")!="")
+        if(localStorage.getItem("State")!="")
         {
             setStateFlag(true);
 
@@ -91,7 +91,7 @@ return (
    </div>
         ):
        <React.Fragment>
-            <h4 style={{textAlign:"center"}}> {localStorage.getItem("State")} State COVID19 Live Tracking<sup><HighlightOffIcon style={Style.Deleted} onClick={deleteStorage}></HighlightOffIcon></sup></h4>
+            <h4 style={{textAlign:"center"}}> {localStorage.getItem("State")} State Live Tracking<sup><HighlightOffIcon style={Style.Deleted} onClick={deleteStorage}></HighlightOffIcon></sup></h4>
             <br></br>
         <StateChart statename = {localStorage.getItem("State")}></StateChart>
            </React.Fragment>}
