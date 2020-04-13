@@ -2,9 +2,6 @@ import React, { useState, useEffect } from 'react';
 
 import {useSelector,useDispatch} from "react-redux"
 import {Doughnut} from 'react-chartjs-2';
-import fetchCovid from "../redux/getCovidlivetracking/covidJsonAction"
-
-
 
 export default function Linechart(params){
     
