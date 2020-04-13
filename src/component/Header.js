@@ -63,6 +63,8 @@ function Header(params) {
                  <h1 className={classes.root}>{"INDIA COVID19 LIVE TRACKING"}</h1>
                  <img className={classes.images} src={virus} alt="virus"></img>
 
+                
+
                  <Typography style={{fontSize:15,textAlign:"center"}} color="textSecondary" gutterBottom>
           Last Update {covidTrackingstate.data.data?Dateformate(covidTrackingstate.data.data.lastRefreshed):"..."}
         </Typography>

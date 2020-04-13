@@ -7,39 +7,7 @@ import Tracking from './TrackingLive'
 
 
 function StateChart(params){
-
-    // const covidStaTrackingstate = useSelector(state=>state.globalreducer);
-    
-    // let f = []
-    // const covidDeathTrackingDispatch = useDispatch();
-    // useEffect(() => {
-        
-    //     covidDeathTrackingDispatch(fetchCovidDeaths());
-    // }, [])
-
-
-    // if(covidStaTrackingstate.data[params.statename])
-    //     {
-    //         Object.keys(covidStaTrackingstate.data[params.statename].districtData).map((keyname,index)=>{
-            
-    //             let key = keyname;
-    //             let r={}
-    //             r[key] = covidStaTrackingstate.data[params.statename].districtData[keyname].confirmed
-    //             f = [...f,r]
-        
-                  
-    //             })
-
-
-    //             f=[f[0],f[1]]
-    //             console.log(f)
-
-         
-
-
-    //     }
-
-    
+ 
     const covidTrackingstate = useSelector(state=>state.reducer)
 
     const covidDeathTrackingstate = useSelector(state=>state.CovidDeathreducer)
@@ -68,13 +36,15 @@ covidTrackingstate.data.data.statewise.filter((a)=>a.state == params.statename).
   let deaths=state.deaths-prevideath;
   let recovered=state.recovered-previrecoverd;
  return (
+    
     <React.Fragment>
         <Tracking key={state.confirmed} cardColor={"#FF8D4E"} cardTitle={"Total"} data={state.confirmed} increased={confirmed}> </Tracking>
     <Tracking key={state.deaths} cardColor={"#FE4F4F"} cardTitle={"Death"} data={state.deaths} increased={deaths}> </Tracking>
     <Tracking key={state.recovered} cardColor={"#2DBF56"} cardTitle={"Death"} data={state.recovered} increased={recovered}> </Tracking>
 
     </React.Fragment>
-
+   
+   
 
  )}):""}
 
