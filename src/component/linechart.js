@@ -2,6 +2,11 @@ import React, { useState, useEffect } from 'react';
 
 import {useSelector,useDispatch} from "react-redux"
 import {Doughnut} from 'react-chartjs-2';
+import fetchCovid from "../redux/getCovidlivetracking/covidJsonAction"
+import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
+
+
+
 
 export default function Linechart(params){
     
@@ -32,6 +37,12 @@ export default function Linechart(params){
 
 ]
 
+let increcon = {}
+let incredeath = {}
+let incredrec = {}
+
+const dyheight = window.innerWidth>1000?100:200
+
 const data = {
 	labels: [],
 	datasets: [{
@@ -41,7 +52,7 @@ const data = {
 		],
 		hoverBackgroundColor: [
 		]
-	}]
+  }]
 };
 
 
@@ -53,21 +64,31 @@ const data = {
             let dis = covidStaTrackingstate.data[params.statename].districtData[keyname];        
             if(dis.delta.confirmed>0)
             {
-                        keyname = keyname+"+"+dis.delta.confirmed
+              let key = keyname;
+              increcon[key] = dis.delta.confirmed
+              
             }
+            
                     data.labels = [...data.labels,keyname];
                     data.datasets[0].data = [...data.datasets[0].data,dis.confirmed]
                     data.datasets[0].backgroundColor=[...data.datasets[0].backgroundColor,color[index]]
                     data.datasets[0].hoverBackgroundColor=[...data.datasets[0].hoverBackgroundColor,color[index]]
 
         })
-        console.log(data.labels.length)
+        console.log(window.innerWidth)
       }
 
     return (
         <div>
         <h2 style={{textAlign:"center"}}>District Pie Chart</h2>
-        {covidStaTrackingstate.data[params.statename]?<Doughnut width={250} height={250} options={{maintainAspectRatio: false}} data={data} />:""}
+        {increcon?
+          Object.keys(increcon).map((k,i)=>{
+          return  <span className="badge badge-pill badge-warning" style={{margin:3,fontSize:10,fontWeight:"normal"}}>{k}<ArrowUpwardIcon style={{margin:3,fontSize:10}}></ArrowUpwardIcon>{increcon[k]}</span>
+          }
+        ):""}
+        
+        {covidStaTrackingstate.data[params.statename]?<Doughnut height={dyheight} options={{responsive: false,
+          maintainAspectRatio: true}} options={{legend:{display:false}}} data={data} />:""}
         
       </div>
     );
