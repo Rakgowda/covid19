@@ -4,6 +4,7 @@ import {useSelector,useDispatch} from "react-redux"
 // import {RadialChart} from "react-vis"
 import fetchCovidDeaths from "../redux/coviddeathtracking/covidDeathAction"
 import Tracking from './TrackingLive'
+import Linechart from "./linechart"
 
 
 function StateChart(params){
@@ -42,6 +43,8 @@ covidTrackingstate.data.data.statewise.filter((a)=>a.state == params.statename).
     <Tracking key={state.deaths} cardColor={"#FE4F4F"} cardTitle={"Death"} data={state.deaths} increased={deaths}> </Tracking>
     <Tracking key={state.recovered} cardColor={"#2DBF56"} cardTitle={"Death"} data={state.recovered} increased={recovered}> </Tracking>
 
+  
+   <Linechart statename = {params.statename} ></Linechart> 
     </React.Fragment>
    
    
