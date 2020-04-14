@@ -81,7 +81,7 @@ const data = {
     return (
         <div>
         <h2 style={{textAlign:"center"}}>District Pie Chart</h2>
-        <div style={{display:"flex",justifyContent:"center",margin:5,alignContent:"center"}}>
+        <div style={{display:"flex",justifyContent:"center",margin:5,alignContent:"center" }}>
 
         {increcon?
           Object.keys(increcon).map((k,i)=>{
