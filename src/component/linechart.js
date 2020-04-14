@@ -37,8 +37,7 @@ export default function Linechart(params){
 ]
 
 let increcon = {}
-let incredeath = {}
-let incredrec = {}
+
 
 const dyheight = window.innerWidth>1000?100:200
 
