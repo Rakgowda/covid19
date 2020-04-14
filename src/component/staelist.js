@@ -8,7 +8,7 @@ import Select from '@material-ui/core/Select';
 import Button from '@material-ui/core/Button';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import StateChart from "./statechart"
-import Linechart from "./linechart"
+
 
 const useStyles = makeStyles((theme) => ({
 
@@ -101,7 +101,7 @@ return (
             <h4 style={{textAlign:"center"}}> {localStorage.getItem("State")} State COVID19 Live Tracking<sup><HighlightOffIcon style={Style.Deleted} onClick={deleteStorage}></HighlightOffIcon></sup></h4>
             <br></br>
         <StateChart statename = {localStorage.getItem("State")}></StateChart>
-        <Linechart statename = {localStorage.getItem("State")} ></Linechart>
+       
            </React.Fragment>}
     </div>
 )
