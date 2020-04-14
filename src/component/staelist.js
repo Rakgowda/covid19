@@ -23,19 +23,19 @@ const useStyles = makeStyles((theme) => ({
 
 function StateList(){
 
-    const [StateFla,setStateFlag] = useState(false);
+    const StateFla =false;
     const covidDeathTrackingstate = useSelector(state=>state.CovidDeathreducer)
    
     const classes = useStyles();
-    const [state, setState] = React.useState('');
+    const [state, setState] =useState('');
     
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] =useState(false);
   
     useEffect(() => {
 
         if(localStorage.getItem("State")!=="" && localStorage.getItem("State")!==null)
         {
-            setStateFlag(true);
+            StateFla = true;
 
         }
        
@@ -61,9 +61,9 @@ function StateList(){
       setOpen(true);
     };
     function deleteStorage() { 
-       localStorage.setItem("State","")
-       
-       setStateFlag(false)
+       localStorage.setItem("State","");
+      StateFla =false;
+      setState("");
      }
 return (
     <div>
