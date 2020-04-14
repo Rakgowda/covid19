@@ -21,11 +21,10 @@ const useStyles = makeStyles((theme) => ({
    textAlign:"center"
   },
   images:{
-      width:150,
-      height:100,
-      marginLeft:"50%",
-      transform:"translate(-50%,0%)",
-      margin:20
+      width:50,
+      height:40,
+     
+
   },
   cardItems:{
       display:"flex",
@@ -60,13 +59,13 @@ function Header(params) {
     }, [])
     return(
             <React.Fragment>
-                 <h1 className={classes.root}>{"INDIA COVID19 LIVE TRACKING"}</h1>
-                 <img className={classes.images} src={virus} alt="virus"></img>
+                 <h1 className={classes.root}>{"INDIA COVID19"}<img className={classes.images} src={virus} alt="virus"></img>{" LIVE TRACKING"}</h1>
+                 
 
                 
 
-                 <Typography style={{fontSize:15,textAlign:"center"}} color="textSecondary" gutterBottom>
-          Last Update {covidTrackingstate.data.data?Dateformate(covidTrackingstate.data.data.lastRefreshed):"..."}
+                 <Typography style={{fontSize:15,textAlign:"center",color:"#21bf73"}} gutterBottom>
+          Last Update at {covidTrackingstate.data.data?Dateformate(covidTrackingstate.data.data.lastRefreshed):"..."}
         </Typography>
 <StateList></StateList>
 <h4 style={{textAlign:"center"}}> India Live COVID19 Tracking</h4>
@@ -74,6 +73,7 @@ function Header(params) {
                  <div className={classes.cardItems} >
 
                  <Tracking key="1" cardColor={"#FF8D4E"} cardTitle={"Total"} data={covidTrackingstate.data.data?covidTrackingstate.data.data.total.confirmed:"..."} increased={covidDeathTrackingstate.Deathdata.data && covidTrackingstate.data.data?(covidTrackingstate.data.data.total.confirmed - covidDeathTrackingstate.Deathdata.data.history[covidDeathTrackingstate.Deathdata.data.history.length-2].total.confirmed):"..."} />
+                 <Tracking key="2" cardColor={"#0779e4"} cardTitle={"Active"} data={covidTrackingstate.data.data?covidTrackingstate.data.data.total.active:"..."} increased={covidDeathTrackingstate.Deathdata.data && covidTrackingstate.data.data?(covidTrackingstate.data.data.total.active-covidDeathTrackingstate.Deathdata.data.history[covidDeathTrackingstate.Deathdata.data.history.length-2].total.active):"..."}/>
                  <Tracking key="2" cardColor={"#FE4F4F"} cardTitle={"Death"} data={covidTrackingstate.data.data?covidTrackingstate.data.data.total.deaths:"..."} increased={covidDeathTrackingstate.Deathdata.data && covidTrackingstate.data.data?(covidTrackingstate.data.data.total.deaths-covidDeathTrackingstate.Deathdata.data.history[covidDeathTrackingstate.Deathdata.data.history.length-2].total.deaths):"..."}/>
                  <Tracking key="3" cardColor={"#2DBF56"} cardTitle="Recover" data={covidTrackingstate.data.data?covidTrackingstate.data.data.total.recovered:"..."} increased={covidDeathTrackingstate.Deathdata.data && covidTrackingstate.data.data?(covidTrackingstate.data.data.total.recovered-covidDeathTrackingstate.Deathdata.data.history[covidDeathTrackingstate.Deathdata.data.history.length-2].total.recovered):"..."} />
                  </div>

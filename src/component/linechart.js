@@ -88,7 +88,7 @@ const data = {
       }
 
     return (
-        <div>
+        <div style={{marginBottom:10}}>
         <h2 style={{textAlign:"center"}}>District Pie Chart</h2>
          <div style={{display:"block",textAlign:"center"}}>
 

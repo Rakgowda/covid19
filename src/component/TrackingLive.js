@@ -28,7 +28,7 @@ const useStyles = makeStyles({
       textAlign:"center"
   },
   subtitlt:{
-      fontSize:25,
+      fontSize:20,
       letterSpacing:"0.1em",
       fontWeight:"bold",
       textAlign:"center"
@@ -53,7 +53,7 @@ function Tracking(params) {
     return (
       <Card className={classes.card} style={cardcolor} variant="outlined">
         <div className={classes.arrow}>
-        <ArrowUpwardIcon style={{ fontSize:20}}></ArrowUpwardIcon>
+        <ArrowUpwardIcon style={{ fontSize:20,transform:params.increased>0?"":"rotate(-180deg)"}}></ArrowUpwardIcon>
         <Typography>{params.increased}</Typography>
         </div>
         
