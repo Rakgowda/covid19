@@ -63,7 +63,7 @@ function StateList(){
     function deleteStorage() { 
       setStateFlag(false)
        localStorage.setItem("State","")
-       setState("");
+      
        
      }
 return (
