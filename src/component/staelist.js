@@ -47,7 +47,7 @@ function StateList(){
      
         setState(event.target.value);
         localStorage.setItem("State",event.target.value)
-        setStateFlag(true)
+        StateFla = true;
 
      
      
