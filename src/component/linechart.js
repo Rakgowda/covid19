@@ -90,11 +90,11 @@ const data = {
     return (
         <div>
         <h2 style={{textAlign:"center"}}>District Pie Chart</h2>
-        <div style={{display:"flex",justifyContent:"center",margin:5}}>
+         <div style={{display:"block",textAlign:"center"}}>
 
         {increcon?
           Object.keys(increcon).map((k,i)=>{
-          return  <span style={{margin:3,fontSize:10,borderRadius:5,paddingLeft:4,paddingRight:4,color:"white",background:col[i]}}>{k}<ArrowUpwardIcon style={{margin:3,fontSize:10}}></ArrowUpwardIcon>{increcon[k]}</span>
+          return  <span className="badge badge-light" style={{color:"white",fontSize:10,margin:5,background:col[i]}}>{k}<ArrowUpwardIcon style={{margin:3,fontSize:10}}></ArrowUpwardIcon>{increcon[k]}</span>
           }
         ):""}
         </div>
@@ -106,3 +106,4 @@ const data = {
     );
   
 }
+
