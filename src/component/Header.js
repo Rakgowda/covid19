@@ -10,7 +10,8 @@ import Typography from '@material-ui/core/Typography';
 import GlobalTracking from "./globalTracking"
 import ControlledExpansionPanels from "./table.js"
 import Divider from '@material-ui/core/Divider';
-import StateList from "./staelist"
+// import StateList from "./staelist"
+
 const useStyles = makeStyles((theme) => ({
   root: {
     ...theme.typography.button,
