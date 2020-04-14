@@ -1,15 +1,24 @@
 import React, { useState, useEffect } from 'react';
+import {useSelector,useDispatch} from "react-redux"
 
-import {useSelector} from "react-redux"
 import {Doughnut} from 'react-chartjs-2';
 import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
+import fetchglobalCovid from "../redux/globalTracking/globalTrackingAction"
 
 
 
 
 export default function Linechart(params){
     
-    const covidStaTrackingstate = useSelector(state=>state.globalreducer)
+  const covidStaTrackingstate = useSelector(state=>state.globalreducer)
+  const covidSateTrackingDispatch = useDispatch();
+
+  
+  useEffect(() => {
+    covidSateTrackingDispatch(fetchglobalCovid());
+
+   
+}, [])
 
     const color = ["#dd2c00",
     "#ff5722",'#FF6384',
