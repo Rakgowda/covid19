@@ -68,7 +68,7 @@ function Header(params) {
                  <Typography style={{fontSize:15,textAlign:"center"}} color="textSecondary" gutterBottom>
           Last Update {covidTrackingstate.data.data?Dateformate(covidTrackingstate.data.data.lastRefreshed):"..."}
         </Typography>
-<StateList></StateList>
+{/* <StateList></StateList> */}
 <h4 style={{textAlign:"center"}}> India Live COVID19 Tracking</h4>
             <br></br>
                  <div className={classes.cardItems} >
