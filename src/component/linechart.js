@@ -37,6 +37,7 @@ export default function Linechart(params){
 ]
 
 let increcon = {}
+let col = []
 
 
 const dyheight = window.innerWidth>1000?100:200
@@ -64,6 +65,7 @@ const data = {
             {
               let key = keyname;
               increcon[key] = dis.delta.confirmed
+              col = [...col,color[index]]
               
             }
             
@@ -79,11 +81,11 @@ const data = {
     return (
         <div>
         <h2 style={{textAlign:"center"}}>District Pie Chart</h2>
-        <div style={{display:"flex",justifyContent:"center",margin:5,alignContent:"center"}}>
+        <div style={{display:"flex",justifyContent:"center",margin:5}}>
 
         {increcon?
           Object.keys(increcon).map((k,i)=>{
-          return  <span className="badge badge-pill badge-warning" style={{margin:3,fontSize:10,fontWeight:"normal"}}>{k}<ArrowUpwardIcon style={{margin:3,fontSize:10}}></ArrowUpwardIcon>{increcon[k]}</span>
+          return  <span style={{margin:3,fontSize:10,borderRadius:5,paddingLeft:4,paddingRight:4,color:"white",background:col[i]}}>{k}<ArrowUpwardIcon style={{margin:3,fontSize:10}}></ArrowUpwardIcon>{increcon[k]}</span>
           }
         ):""}
         </div>
