@@ -27,13 +27,13 @@ function StateList(){
     const covidDeathTrackingstate = useSelector(state=>state.CovidDeathreducer)
    
     const classes = useStyles();
-    const [statelist, setStatelist] = React.useState('');
+    const [state, setState] = React.useState('');
     
     const [open, setOpen] = React.useState(false);
   
     useEffect(() => {
 
-        if(localStorage.getItem("State")!="" && localStorage.getItem("State")!=null)
+        if(localStorage.getItem("State")!=="" && localStorage.getItem("State")!==null)
         {
             setStateFlag(true);
 
@@ -45,7 +45,7 @@ function StateList(){
     
     const handleChange = (event) => {
      
-        setStatelist(event.target.value);
+        setState(event.target.value);
         localStorage.setItem("State",event.target.value)
         setStateFlag(true)
 
@@ -62,7 +62,7 @@ function StateList(){
     };
     function deleteStorage() { 
        localStorage.setItem("State","")
-      
+       setState("");
        setStateFlag(false)
      }
 return (
@@ -78,7 +78,7 @@ return (
          open={open}
          onClose={handleClose}
          onOpen={handleOpen}
-         value={statelist}
+         value={state}
          onChange={handleChange}
         
          

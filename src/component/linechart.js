@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
-import {useSelector,useDispatch} from "react-redux"
+import {useSelector} from "react-redux"
 import {Doughnut} from 'react-chartjs-2';
-import fetchCovid from "../redux/getCovidlivetracking/covidJsonAction"
 import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
 
 
@@ -58,7 +57,7 @@ const data = {
 
    
 
-      if(covidStaTrackingstate.data[params.statename]!= undefined)
+      if(covidStaTrackingstate.data[params.statename]!== undefined)
       {
         Object.keys(covidStaTrackingstate.data[params.statename].districtData).sort((a,b)=>covidStaTrackingstate.data[params.statename].districtData[b].confirmed - covidStaTrackingstate.data[params.statename].districtData[a].confirmed).map((keyname,index)=>{
             let dis = covidStaTrackingstate.data[params.statename].districtData[keyname];        
@@ -81,7 +80,7 @@ const data = {
     return (
         <div>
         <h2 style={{textAlign:"center"}}>District Pie Chart</h2>
-        <div style={{display:"flex",justifyContent:"center",margin:5,alignContent:"center" }}>
+        <div style={{display:"flex",justifyContent:"center",margin:5,alignContent:"center"}}>
 
         {increcon?
           Object.keys(increcon).map((k,i)=>{

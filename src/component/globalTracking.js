@@ -27,7 +27,7 @@ function GlobalTracking(params){
         covidGlobalTrackingDispatch(fetchglobalCovid())
       
     }, [])
-console.log(covideGlobalTrackingstate.data)
+
     return (
         <React.Fragment>
              <div className={classes.cardItems} >
