@@ -10,8 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import GlobalTracking from "./globalTracking"
 import ControlledExpansionPanels from "./table.js"
 import Divider from '@material-ui/core/Divider';
-// import StateList from "./staelist"
-
+import StateList from "./staelist"
 const useStyles = makeStyles((theme) => ({
   root: {
     ...theme.typography.button,
@@ -69,7 +68,7 @@ function Header(params) {
                  <Typography style={{fontSize:15,textAlign:"center"}} color="textSecondary" gutterBottom>
           Last Update {covidTrackingstate.data.data?Dateformate(covidTrackingstate.data.data.lastRefreshed):"..."}
         </Typography>
-{/* <StateList></StateList> */}
+<StateList></StateList>
 <h4 style={{textAlign:"center"}}> India Live COVID19 Tracking</h4>
             <br></br>
                  <div className={classes.cardItems} >
